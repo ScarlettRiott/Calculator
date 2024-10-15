@@ -3,7 +3,7 @@
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f4f4f9;
+  background-color: #f4f4f9; /* Light background for the calculator */
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease-in-out;
@@ -13,8 +13,8 @@
   font-size: 32px;
   padding: 20px;
   margin-bottom: 20px;
-  background-color: #333;
-  color: #fff;
+  background-color: #222; /* Dark background for display */
+  color: #fff; /* White text for visibility */
   border-radius: 8px;
   text-align: right;
 }
@@ -27,8 +27,8 @@
 
 .button {
   padding: 20px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #007bff; /* Blue buttons */
+  color: #fff; /* White text */
   border: none;
   border-radius: 8px;
   font-size: 18px;
@@ -37,31 +37,33 @@
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Darker blue on hover */
   transform: scale(1.05);
 }
 
 .mode-button {
-  background-color: #28a745;
+  background-color: #28a745; /* Green for mode button */
+  color: #fff; /* White text */
 }
 
 .mode-button:hover {
-  background-color: #218838;
+  background-color: #218838; /* Darker green on hover */
 }
 
 .clear-button {
   grid-column: span 4;
-  background-color: #dc3545;
+  background-color: #dc3545; /* Red for clear button */
+  color: #fff; /* White text */
 }
 
 .clear-button:hover {
-  background-color: #c82333;
+  background-color: #c82333; /* Darker red on hover */
 }
 
 /* History styling */
 .history-container {
   margin-top: 20px;
-  background-color: #f9f9f9;
+  background-color: #f9f9f9; /* Light background for history */
   padding: 15px;
   border-radius: 8px;
   max-height: 300px;
@@ -74,8 +76,9 @@
 }
 
 .history-container li {
-  background-color: #e9ecef;
+  background-color: #e9ecef; /* Light background for history items */
   padding: 10px;
   margin-bottom: 5px;
   border-radius: 4px;
+  color: #333; /* Dark text for readability */
 }
