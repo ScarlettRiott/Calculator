@@ -1,44 +1,34 @@
 import React, { useState } from 'react';
 import Calculator from './components/Calculator';
-import Graph from './components/Graph';
+import CurrencyConverter from './components/CurrencyConverter';
+import FinancialCalculator from './components/FinancialCalculator';
+import ScientificCalculator from './components/ScientificCalculator';
 import History from './components/History';
-import UnitConverter from './components/UnitConverter';
-import './index.css';
+import './App.css';
 
-function App() {
-  const [theme, setTheme] = useState('dark');
-  const [calculatorType, setCalculatorType] = useState('basic');
+const App = () => {
+  const [calculatorType, setCalculatorType] = useState('Standard');
+  const [history, setHistory] = useState([]);
 
-  const handleToggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
-
-  const handleCalculatorTypeChange = (type) => {
-    setCalculatorType(type);
+  const addToHistory = (calculation) => {
+    setHistory((prev) => [...prev, calculation]);
   };
 
   return (
-    <div className={`calculator ${theme}`}>
-      <button onClick={handleToggleTheme}>
-        Switch to {theme === 'dark' ? 'Light' : 'Dark'} Mode
-      </button>
-      <div>
-        <button onClick={() => handleCalculatorTypeChange('basic')}>Basic</button>
-        <button onClick={() => handleCalculatorTypeChange('scientific')}>Scientific</button>
-        <button onClick={() => handleCalculatorTypeChange('financial')}>Financial</button>
-        <button onClick={() => handleCalculatorTypeChange('graph')}>Graph</button>
-        <button onClick={() => handleCalculatorTypeChange('converter')}>Unit Converter</button>
+    <div className="App">
+      <div className="calculator-type-selector">
+        <button onClick={() => setCalculatorType('Standard')}>Standard</button>
+        <button onClick={() => setCalculatorType('Scientific')}>Scientific</button>
+        <button onClick={() => setCalculatorType('Financial')}>Financial</button>
+        <button onClick={() => setCalculatorType('CurrencyConverter')}>Currency Converter</button>
       </div>
-
-      {calculatorType === 'basic' && <Calculator />}
-      {calculatorType === 'scientific' && <Calculator scientific />}
-      {calculatorType === 'financial' && <Calculator financial />}
-      {calculatorType === 'graph' && <Graph />}
-      {calculatorType === 'converter' && <UnitConverter />}
-      
-      <History />
+      {calculatorType === 'Standard' && <Calculator />}
+      {calculatorType === 'Scientific' && <ScientificCalculator />}
+      {calculatorType === 'Financial' && <FinancialCalculator />}
+      {calculatorType === 'CurrencyConverter' && <CurrencyConverter />}
+      <History history={history} />
     </div>
   );
-}
+};
 
 export default App;

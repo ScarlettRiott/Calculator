@@ -1,26 +1,12 @@
 import React, { useState } from 'react';
+import './Calculator.css'; // For styling the calculator
 
-const scientificButtons = ['sin', 'cos', 'tan', 'log', 'sqrt', 'exp', '^', 'π', 'e'];
-const financialButtons = ['PV', 'FV', 'RATE', 'NPV', 'IRR', 'PMT'];
-
-const Calculator = ({ scientific, financial }) => {
+const Calculator = () => {
   const [input, setInput] = useState('');
   const [result, setResult] = useState('');
-  const [history, setHistory] = useState([]);
 
-  const handleClick = (value) => {
-    setInput(input + value);
-  };
-
-  const handleEqual = () => {
-    try {
-      const evalResult = eval(input); // Use mathjs for safer evaluation in production
-      setResult(evalResult);
-      setHistory([...history, `${input} = ${evalResult}`]);
-      setInput('');
-    } catch (error) {
-      setResult('Error');
-    }
+  const handleButtonClick = (value) => {
+    setInput((prev) => prev + value);
   };
 
   const handleClear = () => {
@@ -28,26 +14,25 @@ const Calculator = ({ scientific, financial }) => {
     setResult('');
   };
 
-  const buttons = ['1', '2', '3', '+', '4', '5', '6', '-', '7', '8', '9', '*', '0', '.', '/', '='];
+  const handleEqual = () => {
+    try {
+      setResult(eval(input).toString()); // Eval used for simplicity, consider a safer alternative.
+    } catch (err) {
+      setResult('Error');
+    }
+  };
 
   return (
-    <div>
-      <div className="display">
-        <input type="text" value={input} readOnly />
-        <input type="text" value={result} readOnly />
-      </div>
-      <div>
-        {buttons.map((btn, idx) => (
-          <button key={idx} onClick={() => handleClick(btn)}>{btn}</button>
+    <div className="calculator">
+      <input type="text" value={input} readOnly />
+      <div className="result">{result}</div>
+      <div className="buttons">
+        {['1', '2', '3', '+', '4', '5', '6', '-', '7', '8', '9', '*', '0', '.', '=', '/'].map((value) => (
+          <button key={value} onClick={() => value === '=' ? handleEqual() : handleButtonClick(value)}>
+            {value}
+          </button>
         ))}
-        <button onClick={handleEqual}>=</button>
-        <button onClick={handleClear}>C</button>
-        {scientific && scientificButtons.map((btn, idx) => (
-          <button key={idx} onClick={() => handleClick(btn)}>{btn}</button>
-        ))}
-        {financial && financialButtons.map((btn, idx) => (
-          <button key={idx} onClick={() => handleClick(btn)}>{btn}</button>
-        ))}
+        <button onClick={handleClear}>Clear</button>
       </div>
     </div>
   );
