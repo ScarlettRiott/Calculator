@@ -1,84 +1,148 @@
 /* General layout for calculator */
 .calculator-container {
-  max-width: 400px;
-  margin: 0 auto;
+  max-width: 450px;
+  margin: 50px auto;
   padding: 20px;
-  background-color: #f4f4f9; /* Light background for the calculator */
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.5s ease-in-out;
+  background-color: #f0f0f5; /* Softer light background */
+  border-radius: 15px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Softer shadow */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
+/* Display area */
 .display {
-  font-size: 32px;
+  font-size: 36px;
   padding: 20px;
-  margin-bottom: 20px;
-  background-color: #222; /* Dark background for display */
-  color: #fff; /* White text for visibility */
-  border-radius: 8px;
+  background-color: #1e272e; /* Dark display background */
+  color: #fff; /* White text */
+  border-radius: 10px;
   text-align: right;
+  box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.4); /* Inset shadow for depth */
 }
 
+/* Button grid */
 .button-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 15px;
 }
 
 .button {
   padding: 20px;
-  background-color: #007bff; /* Blue buttons */
-  color: #fff; /* White text */
-  border: none;
-  border-radius: 8px;
-  font-size: 18px;
+  background-color: #2f3640; /* Darker buttons for neutral operations */
+  color: #fff;
+  border-radius: 10px;
+  font-size: 20px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s ease, transform 0.1s ease-in-out;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  transform: scale(1.05);
+  background-color: #3b3b4d; /* Slightly lighter hover state */
+  transform: translateY(-3px); /* Lift effect on hover */
 }
 
+/* Special buttons */
 .mode-button {
-  background-color: #28a745; /* Green for mode button */
-  color: #fff; /* White text */
+  background-color: #4cd137; /* Green for mode switching */
 }
 
 .mode-button:hover {
-  background-color: #218838; /* Darker green on hover */
+  background-color: #44bd32;
 }
 
 .clear-button {
-  grid-column: span 4;
-  background-color: #dc3545; /* Red for clear button */
-  color: #fff; /* White text */
+  background-color: #e84118; /* Red for the clear button */
 }
 
 .clear-button:hover {
-  background-color: #c82333; /* Darker red on hover */
+  background-color: #c23616;
 }
 
-/* History styling */
-.history-container {
-  margin-top: 20px;
-  background-color: #f9f9f9; /* Light background for history */
-  padding: 15px;
-  border-radius: 8px;
-  max-height: 300px;
+/* Number and operator buttons */
+.number-button {
+  background-color: #487eb0; /* Blue for number buttons */
+}
+
+.number-button:hover {
+  background-color: #40739e;
+}
+
+.operator-button {
+  background-color: #00a8ff; /* Lighter blue for operators */
+}
+
+.operator-button:hover {
+  background-color: #0097e6;
+}
+
+/* Full width button (for clear) */
+.full-width {
+  grid-column: span 4;
+}
+
+/* Pop-out slider for history */
+.history-slider {
+  position: fixed;
+  right: -350px;
+  top: 0;
+  width: 350px;
+  height: 100%;
+  background-color: #f4f4f4;
+  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px 0 0 10px;
+  transition: right 0.3s ease;
   overflow-y: auto;
 }
 
-.history-container ul {
-  list-style-type: none;
-  padding-left: 0;
+.history-slider.open {
+  right: 0;
 }
 
-.history-container li {
-  background-color: #e9ecef; /* Light background for history items */
-  padding: 10px;
-  margin-bottom: 5px;
-  border-radius: 4px;
-  color: #333; /* Dark text for readability */
+.history-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+}
+
+.history-item {
+  background-color: #dcdde1;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #2f3640;
+}
+
+.history-item:hover {
+  background-color: #b2bec3;
+  cursor: pointer;
+}
+
+/* Slide-out toggle button */
+.history-toggle {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: #00a8ff;
+  color: white;
+  padding: 15px;
+  border-radius: 10px 0 0 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.history-toggle:hover {
+  background-color: #40739e;
 }
