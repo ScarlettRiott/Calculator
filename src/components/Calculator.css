@@ -88,4 +88,17 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+
+  input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
   
+  .history-container {
+    max-height: 200px; /* Adjust as needed */
+    overflow-y: auto;
+    margin-top: 20px;
+  }
