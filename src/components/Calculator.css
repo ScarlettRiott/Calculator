@@ -49,6 +49,15 @@
   background-color: #218838;
 }
 
+.clear-button {
+  grid-column: span 4;
+  background-color: #dc3545;
+}
+
+.clear-button:hover {
+  background-color: #c82333;
+}
+
 /* History styling */
 .history-container {
   margin-top: 20px;
@@ -57,11 +66,6 @@
   border-radius: 8px;
   max-height: 300px;
   overflow-y: auto;
-  transition: max-height 0.4s ease-in-out;
-}
-
-.history-container:hover {
-  max-height: 600px;
 }
 
 .history-container ul {
@@ -74,22 +78,4 @@
   padding: 10px;
   margin-bottom: 5px;
   border-radius: 4px;
-}
-
-.financial-calculator label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.financial-calculator input {
-  padding: 8px;
-  margin-left: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-.result {
-  margin-top: 20px;
-  font-size: 20px;
-  font-weight: bold;
 }

@@ -66,7 +66,22 @@ const Calculator = () => {
                 {item}
               </button>
             ))}
-            {/* Add rest of the buttons */}
+            {['4', '5', '6', '*'].map((item) => (
+              <button className="button" onClick={() => handleButtonClick(item)} key={item}>
+                {item}
+              </button>
+            ))}
+            {['1', '2', '3', '-'].map((item) => (
+              <button className="button" onClick={() => handleButtonClick(item)} key={item}>
+                {item}
+              </button>
+            ))}
+            {['0', '.', '=', '+'].map((item) => (
+              <button className="button" onClick={() => (item === '=' ? calculate() : handleButtonClick(item))} key={item}>
+                {item}
+              </button>
+            ))}
+            <button className="button clear-button" onClick={clearInput}>C</button>
           </div>
         )}
 
